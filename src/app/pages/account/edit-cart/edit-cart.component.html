@@ -1,0 +1,26 @@
+<div class="container">
+    <p *ngIf="cartItems.length==0">
+        سبد خرید شما خالی است
+    </p>
+
+    <table *ngIf="cartItems.length!=0">
+        <tr>
+            <th> عکس کالا</th>
+            <th> نام کالا</th>
+            <th> قیمت کالا</th>
+            <th> تعداد کالا</th>
+            <th> قیمت کل</th>
+            <th> حذف کالا</th>
+        </tr>
+        <tr *ngFor="let cartItem of cartItems">
+            <td class="td1"><img [src]="domainName+'/images/Product/'+cartItem.productImage"></td>
+            <td>{{cartItem.productName}}</td>
+            <td>{{cartItem.productPrice}}</td>
+            <td>{{cartItem.count}}</td>
+            <td>{{cartItem.priceInEachRow}}</td>
+            <td><button class="delBtn" (click)="deleteItem(cartItem.productId)">حذف</button></td>
+        </tr>
+        <tr><td style="text-align:right" colspan="5">قیمت نهایی</td><td >{{sum}} تومان</td></tr>
+    </table>
+
+</div>

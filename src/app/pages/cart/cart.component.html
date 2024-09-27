@@ -1,0 +1,43 @@
+<div class="car-container"  *ngIf="cartItems.length!=0">
+   
+    <div class="car">
+        <p class="cart-items-count cart-item">سبد خرید ({{cartItems.length}})</p>
+        <p class="cart-total-price cart-item">{{total}} تومان</p>
+        <a href="" class="cart-icon cart-item">
+            <img class="icon-cart-img" src="./.././../../assets/images/cart.png">
+        </a>
+
+    </div>
+    <div class="cart-dropdown">
+        <div class="cart-row" *ngFor="let item of cartItems">
+
+            <div class="cart-row-image item">
+                <img class="cart-row-image-img" [src]="domainName+'/images/product/'+item.productImage">
+            </div>
+            <div class="cart-row-name item">
+                <strong>{{item.productName}}</strong>
+                <span class="remove-icon" (click)="removeItem(item.productId)">&times;</span>
+            </div>
+            <div class="cart-row-count  item">
+                <strong>{{item.count}}</strong>
+
+            </div>
+            <div class="cart-row-price  item">
+                <strong>{{item.priceInEachRow}}</strong>
+
+            </div>
+        </div>
+        <div class="cart-dropdown-footer">
+
+
+            <div class="cart-total">
+                <p>جمع کل: </p>
+                <p>{{total}} تومن</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="car-container"  *ngIf="cartItems.length==0">
+<div class="empty">سبد خرید شما خالی است</div>
+</div>

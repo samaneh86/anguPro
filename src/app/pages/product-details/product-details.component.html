@@ -1,0 +1,171 @@
+<!--  ==========  -->
+<!--  = Main container =  -->
+<!--  ==========  -->
+<div class="container">
+    <div class="push-up top-equal blocks-spacer">
+
+        <!--  ==========  -->
+        <!--  = Product =  -->
+        <!--  ==========  -->
+        <div class="row blocks-spacer">
+
+            <!--  ==========  -->
+            <!--  = Preview Images =  -->
+            <!--  ==========  -->
+            <div class="span5">
+                <div class="product-preview">
+                    <div class="picture">
+                        <img [src]="domainName+'/images/product/'+product.productImage" alt="" width="940" height="940"
+                            id="mainPreviewImg" [alt]="product.id" #komak />
+                    </div>
+                    <div class="thumbs clearfix" *ngIf="productGalleries != null">
+                        <div class="thumb" *ngFor="let gallery of productGalleries">
+                            <a href="#mainPreviewImg"><img [src]="domainName+'/images/product/'+gallery.imageName"
+                                    (click)="setTopImg(gallery.imageName)" alt="" width="940" height="940" /></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--  ==========  -->
+            <!--  = Title and short desc =  -->
+            <!--  ==========  -->
+            <div class="span7">
+                <div class="product-title">
+                    
+                    <h1 class="name"><span class="light">محصول ویژه</span> {{product.productName}}</h1>
+                    <div class="meta">
+                        <span class="tag">{{product.price}} تومان</span>
+                        <span class="stock">
+                            <span class="btn btn-success">موجود</span>
+                            <span class="btn btn-danger">اتمام موجودی</span>
+                            <span class="btn btn-warning">تماس بگیرید</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="product-description">
+                    <p>{{product.shortDescription}}</p>
+                    <hr />
+
+                    <!--  ==========  -->
+                    <!--  = Add to cart form =  -->
+                    <!--  ==========  -->
+                    <form action="#" class="form form-inline clearfix">
+                        <div class="numbered">
+                            <input type="text" name="num" value="1" class="tiny-size" [(ngModel)]="count"/>
+                            <span class="clickable add-one icon-plus-sign-alt" (click)="plus()" ></span>
+                            <span class="clickable remove-one icon-minus-sign-alt" (click)="minus()"></span>
+                        </div>
+                        &nbsp;
+
+                        <button class="btn btn-danger pull-right" (click)="addToCart()"><i class="icon-shopping-cart"></i> اضافه به
+                            سبد خرید</button>
+                    </form>
+
+                    <hr />
+
+                    <!--  ==========  -->
+                    <!--  = Share buttons =  -->
+                    <!--  ==========  -->
+                    <div class="share-item">
+                        <div class="pull-right social-networks">
+                            <!-- AddThis Button BEGIN -->
+                            <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_pinterest_pinit"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                            </div>
+                            <script type="text/javascript"
+                                src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-517459541beb3977"></script>
+                            <!-- AddThis Button END -->
+                        </div>
+                        با دوستان خود به اشتراک بگذارید :
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--  ==========  -->
+        <!--  = Tabs with more info =  -->
+        <!--  ==========  -->
+        <div class="row">
+            <div class="span12">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab-1" data-toggle="tab">جزئیات</a>
+                    </li>
+                    <li>
+                        <a href="#tab-2" data-toggle="tab">جدول اندازه</a>
+                    </li>
+                    <li>
+                        <a href="#tab-3" data-toggle="tab">نظرات</a>
+                    </li>
+                    <li>
+                        <a href="#tab-4" data-toggle="tab">جزئیات ارسال</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="fade in tab-pane active" id="tab-1">
+                        <h3>توضیحات محصول</h3>
+                        <p> {{product.shortDescription}} </p>
+
+                        <p>{{product.description}} </p>
+                    </div>
+                    <div class="fade tab-pane" id="tab-2">
+                        <p>
+
+                        </p>
+                    </div>
+                    <div class="fade tab-pane" id="tab-3" *ngIf="showCommentContainer">
+                        <p *ngIf="comments == null">نظری وجود ندارد</p>
+                        <div *ngIf="comments != null">
+
+                            <div class="comment-header">نظر شما</div>
+                            <div class="comment-container">
+                                
+                                <form class="comment-form" [formGroup]="commentForm">
+                                    <div>
+                                        <input type="text" placeholder="نام" disabled [value]="commentFirstName">
+                                        <input type="text" placeholder="ایمیل" disabled [value]="commentLastName">
+                                    </div>
+                                    <textarea formControlName="text"></textarea>
+                                    <div><button class="comment-btn" (click)="submitComment()">ارسال</button></div>
+                                    <p>{{resText}}</p>
+                                </form>
+                            </div>
+                            <div class="add-comment-header">نظرات</div>
+                           
+                                
+                                <div class="add-comment" *ngFor="let comment of comments">
+                                    <div class="add-comment-title">
+                                        <div class="add-comment-name">{{comment.firstName+" "+comment.lastName}}</div>
+                                        <div class="add-comment-hour">{{comment.time}}</div>
+                                        <div class="add-comment-date">{{comment.date}}</div>
+                                    </div>
+                                    <div class="add-comment-text">
+                                        {{comment.text}}
+                                    </div>
+
+                                </div>
+                           
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="fade tab-pane" id="tab-4">
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /container -->
+
+<app-related-products [productId]="product.id"></app-related-products>

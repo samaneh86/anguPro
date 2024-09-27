@@ -1,0 +1,27 @@
+*{
+    box-sizing:border-box;
+}
+.list-container{
+width:50%;
+text-align:left;
+padding:10px;
+}
+.list-container ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+
+}
+.list-container ul li a{
+display:inline-block;
+width:150px;
+padding:10px;
+margin:3px;
+text-decoration:none;
+color:black;
+background-color:beige;
+text-align:center
+}
+.list-container ul li a:hover{
+    background-color:rgb(214, 214, 148);  
+}

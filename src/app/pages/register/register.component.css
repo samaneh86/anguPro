@@ -1,0 +1,17 @@
+.ng-invalid{
+    color:rgb(0, 166, 255);
+}
+.ng-touched{
+    color:rgb(255, 94, 0);
+}
+.container{
+    direction:ltr;
+}
+input{
+    width:100%;
+    direction:rtl;
+}
+textarea{
+    width:100%;
+    direction:rtl;
+}

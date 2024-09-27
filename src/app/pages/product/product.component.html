@@ -1,0 +1,161 @@
+<div class="darker-stripe">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="index.html">وبمارکت</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="shop.html">فروشگاه</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="shop.html">قالب بندی اصلی</a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="push-up blocks-spacer">
+        <div class="row">
+            <form class="navbar-form pull-right">
+                <button type="submit"><span class="icon-search" (click)="getProduct(search.value)"></span></button>
+                <input type="text" class="span1" name="search" id="navSearchInput" #search>
+            </form>
+            <!--  ==========  -->
+            <!--  = Sidebar =  -->
+            <!--  ==========  -->
+            <aside class="span3 left-sidebar" id="tourStep1">
+                <div class="sidebar-item sidebar-filters" id="sidebarFilters">
+
+                    <!--  ==========  -->
+                    <!--  = Sidebar Title =  -->
+                    <!--  ==========  -->
+                    <div class="underlined">
+                        <h3><span class="light">بر اساس فیلتر</span> خرید کنید</h3>
+
+                    </div>
+
+                    <!--  ==========  -->
+                    <!--  = Categories =  -->
+                    <!--  ==========  -->
+                    <div class="accordion-group" id="tourStep2">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#filterOne">دسته بندی ها <b
+                                    class="caret"></b></a>
+                        </div>
+                        <div id="filterOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <a href="#" data-target=".filter--accessories" class="selectable"
+                                    *ngFor="let category of categories;let i=index">
+
+                                   <input type="checkbox" [value]="category.categoryId" (change)="setCategories($event)">
+                                    {{category.title}}
+                                </a>
+
+                            </div>
+                        </div>
+                    </div> <!-- /categories -->
+
+                    <!--  ==========  -->
+                    <!--  = Prices slider =  -->
+                    <!--  ==========  -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">قیمت <b
+                                    class="caret"></b></a>
+                        </div>
+                        <div id="filterPrices" class="accordion-body in collapse">
+                            <div class="accordion-inner with-slider">
+                                <label>کمترین قیمت </label>
+                                <input type="range" min=0 max="5000" (change)="setMinPrice($event)" />
+                                {{productFilter.minPrice}}
+                                <hr>
+                                <hr>
+                                <label>بیشترین قیمت </label>
+                                <input type="range" min=0 max="5000" (change)="setMaxPrice($event)" />
+                                {{productFilter.maxPrice}}
+                            </div>
+                        </div>
+                    </div> <!-- /prices slider -->
+
+
+
+
+
+
+
+
+
+                </div>
+            </aside> <!-- /sidebar -->
+
+            <!--  ==========  -->
+            <!--  = Main content =  -->
+            <!--  ==========  -->
+            <section class="span9">
+
+                <!--  ==========  -->
+                <!--  = Title =  -->
+                <!--  ==========  -->
+                <div class="underlined push-down-20">
+                    <div class="row">
+                        <div class="span5">
+                            <h3><span class="light">همه</span> محصولات</h3>
+                        </div>
+                        <div class="span4">
+                            <div class="form-inline sorting-by" id="tourStep4">
+                                <label for="isotopeSorting" class="black-clr">چینش :</label>
+                                <select id="isotopeSorting" class="span3"  (change)="setOrder($event)">
+                                    <option  value="1" >بر اساس قیمت صعودی
+                                    </option>
+
+                                    <option value="2" >بر اساس قیمت نزولی
+                                    </option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /title -->
+
+                <!--  ==========  -->
+                <!--  = Products =  -->
+                <!--  ==========  -->
+                <div class="row popup-products" *ngIf="products !=null">
+                    <div id="isotopeContainer" class="isotope-container" *ngFor="let product of products">
+
+
+
+                        <app-single-product [product]="product"></app-single-product>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+                <div class="paging" *ngIf="pagers.length!=0">
+                    <ul>
+                        <li *ngFor="let pager of pagers"><a (click)="getPageId(pager)">{{pager}}</a></li>
+                    </ul>
+                </div>
+                <hr />
+
+            </section> <!-- /main content -->
+
+        </div>
+    </div>
+
+</div> <!-- /container -->

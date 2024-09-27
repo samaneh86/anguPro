@@ -1,0 +1,55 @@
+<div class="boxed-area no-bottom" *ngIf="relatedProducts != null">
+    <div class="container">
+        
+        <!--  ==========  -->
+        <!--  = Title =  -->
+        <!--  ==========  -->
+        <div class="row">
+            <div class="span12">
+                <div class="main-titles lined" >
+                    <h2 class="title"><span class="light">محصولات</span> مرتبط</h2>
+                </div>
+            </div>
+        </div>
+        
+        <!--  ==========  -->
+        <!--  = Related products =  -->
+        <!--  ==========  -->
+        <div class="row popup-products" >
+             
+                
+            <!--  ==========  -->
+            <!--  = Products =  -->
+            <!--  ==========  -->
+            <div class="span3" *ngFor="let product of relatedProducts">
+                <div class="product" >
+                    <div class="product-img">
+                        <div class="picture">
+                            <img [src]="domainName+'/images/product/'+product.productImage" alt="" width="540" height="374">
+                            <div class="img-overlay">
+                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
+                                <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-titles no-margin">
+                        <h4 class="title"><span class="striked">{{product.price}}</span></h4>
+                        <h5 class="no-margin"> {{product.productName}}</h5>
+                    </div>
+                    <p class="desc">{{product.shortDescription}}</p>
+                    <p class="center-align stars">
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star"></span>
+                    </p>
+                </div>
+            </div> <!-- /product -->
+             
+                
+           
+            
+        </div>
+    </div>
+</div>

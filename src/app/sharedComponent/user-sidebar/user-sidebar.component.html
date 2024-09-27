@@ -1,0 +1,8 @@
+<div class="list-container">
+    <ul>
+        <li><a [routerLink]="['/user','edit']">ویرایش اطلاعات</a></li>
+        <li><a [routerLink]="['/user','edit-cart']">سبد خرید </a></li>
+        <li><a (click)="logout()">خروج </a></li>
+    </ul>
+</div>
+<router-outlet></router-outlet>

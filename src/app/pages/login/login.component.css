@@ -1,0 +1,14 @@
+.container{
+    direction:ltr;
+}
+input{
+    width:100%;
+    direction:rtl;
+}
+.ng-invalid{
+    color:red;
+}
+.wel{
+    color:rgb(0, 255, 47);
+    cursor:pointer;
+}

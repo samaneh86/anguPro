@@ -1,0 +1,104 @@
+
+
+
+
+
+
+
+<div class="all-container">
+    <div class="container">
+        <div class="push-up top-equal blocks-spacer-last">
+            <div class="row">
+    
+                <!--  ==========  -->
+                <!--  = Main Title =  -->
+                <!--  ==========  -->
+    
+                <div class="span12">
+                    <div class="title-area">
+                        <h1 class="inline"><span class="light">پنل کاربری خود را ویرایش کنید </span> </h1>
+                    </div>
+                </div>
+    
+                <!--  ==========  -->
+                <!--  = Main content =  -->
+                <!--  ==========  -->
+                <section class="span8 single single-page">
+    
+                    <section class="contact-form-container">
+    
+    
+    
+                        <form id="commentform" class="form form-inline form-contact" [formGroup]="editForm"
+                         >
+                            <p class="push-down-20">
+                                <label for="author">نام<span class="red-clr bold">*</span></label>
+                                <input type="text" aria-required="true" tabindex="1" size="30" value="" id="author"
+                                     required formControlName="firstName">
+                                
+                            </p>
+    
+    
+                            <p class="push-down-20">
+                                <label for="author">نام خانوادگی<span class="red-clr bold">*</span></label>
+                                <input type="text" aria-required="true" tabindex="1" size="30" value="" id="author"
+                                     required formControlName="lastName">
+                                
+                            </p>
+    
+    
+    
+    
+    
+                            <p class="push-down-20">
+                                <label for="url">ایمیل  </label>
+                                <input type="input" tabindex="3" size="30" value="" id="url" name="url"
+                                formControlName="email" >
+                               
+                            </p>
+    
+    
+    
+    
+                            <p class="push-down-20">
+                                <label for="url">آدرس</label>
+                                <input type="input" tabindex="3" size="30" value="" id="url" name="url"
+                                formControlName="address"  >
+                              
+                            </p>
+    
+    
+    
+    
+    
+    
+    
+                            <p>
+                                <button class="btn btn-primary bold" type="submit" tabindex="5" id="submit" (click)="send()" [disabled]="editForm.disabled">
+                                    ارسال</button>
+                            </p>
+                        </form>
+                    </section>
+    
+                    <hr />
+    
+    
+    
+                </section> <!-- /main content -->
+    
+    
+            </div>
+        </div>
+    
+    </div> <!-- /container -->
+    <app-user-sidebar></app-user-sidebar>
+</div>
+
+
+
+
+
+
+
+
+
